@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  min-width: 960px;
+  min-width: 1000px;
 }
 
 code {
@@ -13,9 +13,23 @@ code {
     monospace;
 }
 
+.products-container{
+  display: flex;
+}
+
+.products-sort{
+  width: 150px;
+  margin-top: 15px;
+}
+
+.products-sort button{
+  width: 120px;
+  border: 0;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
 .product-card{
   display: flex;
-  width: 85%;
   padding: 25px;
   flex-direction: row;
   justify-content: space-evenly;
@@ -103,4 +117,50 @@ code {
   letter-spacing: 5px;
   word-spacing: 10px;
   margin-top: 75px;
+}
+
+#add-product-form{
+  width: 640px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group{
+  margin:10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-input{
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.input-group label{
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.input-button-group{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.input-button-group button{
+  padding: 8px 5px;
+  margin: 5px 10px;
+  width:125px;
+  border: 0px;
+  border-radius: 5px;
+  color: white
+}
+
+.page-heading{
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: 2px;
+  margin: 15px 15px 25px;
 }
