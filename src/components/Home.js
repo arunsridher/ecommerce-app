@@ -56,7 +56,7 @@ class Home extends Component {
     // const { productsList } = this.props.state;
     return (
       <div className="products-container">
-        <div>
+        <div className="products-list">
           {
             productsList.map((product, index) => (
               <ProductCard
