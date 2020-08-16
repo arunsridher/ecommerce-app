@@ -5,7 +5,8 @@ import { ProductCard } from './index';
 class Home extends Component {
   
   render() {
-    const { productsList } = this.props.products;
+    console.log('State ', this.props.state)
+    const { productsList } = this.props.state;
     return (
       <div>
         {
@@ -22,9 +23,9 @@ class Home extends Component {
   }
 }
 
-function mapStateToProps({products}){
+function mapStateToProps(state){
   return{
-    products
+    state
   }
 }
 export default connect(mapStateToProps)(Home);
