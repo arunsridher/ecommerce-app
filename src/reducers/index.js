@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { ADD_PRODUCTS } from '../actions';
 
 const initialProductState = {
-  list: []
+  productsList: []
 }
 
 export function products(state = initialProductState, action){
@@ -10,7 +10,7 @@ export function products(state = initialProductState, action){
     case ADD_PRODUCTS:
       return {
         ...state,
-        list: action.products
+        productsList: action.products
       };
     default:
       return state;

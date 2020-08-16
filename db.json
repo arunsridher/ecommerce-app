@@ -5,7 +5,7 @@
       "name": "Phone",
       "description": "a telephone with access to a cellular radio system so it can be used over a wide area, without a physical connection to a network.",
       "price": 39999,
-      "rating": 4,
+      "rating": "3.5",
       "img": "https://images.unsplash.com/photo-1544866092-1935c5ef2a8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
     },
     {
@@ -13,7 +13,7 @@
       "name": "Laptop",
       "description": "a computer that is portable and suitable for use while travelling.",
       "price": 98000,
-      "rating": 5,
+      "rating": "4.5",
       "img": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
     },
     {
@@ -21,7 +21,7 @@
       "name": "Watch",
       "description": "a watch worn on a strap round the wrist.",
       "price": 6999,
-      "rating": 4,
+      "rating": "4.1",
       "img": "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
     }
   ]

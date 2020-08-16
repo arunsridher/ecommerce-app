@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
 import { Header, Home, CreateProduct, ManageProducts, Cart, Page404 } from './index';
-import 'bootstrap/dist/css/bootstrap.css';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { getProducts } from '../actions';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import 'bootstrap/dist/css/bootstrap.css';
 
 class App extends Component {
   
   componentDidMount(){
-    const {store} = this.props;
-    store.subscribe(() => {
-      this.forceUpdate();
-    });
-    store.dispatch(getProducts());
-    console.log('STATE ', store.getState());
+    this.props.dispatch(getProducts());
   }
 
   render(){
@@ -39,4 +35,7 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps(store){
+  return store;
+}
+export default connect(mapStateToProps)(App);
