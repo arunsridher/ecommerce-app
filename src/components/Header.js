@@ -8,11 +8,11 @@ class Header extends Component {
     return (
       <div>
         <Navbar bg="dark" variant="dark" expand="sm">
-          <Navbar.Brand href="home">eCommerce</Navbar.Brand>
+          <Navbar.Brand href="/">eCommerce</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="home">Home</Nav.Link>
+              <Nav.Link href="/">Home</Nav.Link>
               <NavDropdown title="Products" id="basic-nav-dropdown">
                 <NavDropdown.Item href="add">Add Product</NavDropdown.Item>
                 <NavDropdown.Item href="edit">Manage Products</NavDropdown.Item>
