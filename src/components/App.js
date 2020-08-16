@@ -12,18 +12,13 @@ class App extends Component {
   }
 
   render(){
+    const cartSize = this.props.cart.length;
     return (
       <Router>
         <div>
-          <Header/>
+          <Header cartSize={cartSize} />
             <Switch>
-              <Route 
-                exact 
-                path="/" 
-                render={(props) => {
-                  return <Home {...props} />;
-                }}
-              />
+              <Route exact path="/" component={Home} />
               <Route path="/add" component={CreateProduct} />
               <Route path="/edit" component={ManageProducts} />
               <Route path="/cart" component={Cart} />

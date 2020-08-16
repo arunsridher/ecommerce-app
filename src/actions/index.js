@@ -3,7 +3,7 @@ export const GET_PRODUCTS = "GET_PRODUCTS";
 export const ADD_PRODUCTS = "ADD_PRODUCTS";
 export const ADD_PRODUCT_TO_LIST = "ADD_PRODUCT_TO_LIST";
 export const ADD_PRODUCT_TO_CART = "ADD_PRODUCT_TO_CART";
-
+export const REMOVE_PRODUCT_FROM_CART = "REMOVE_PRODUCT_FROM_CART";
 
 // action creators
 export function getProducts(){
@@ -35,6 +35,13 @@ export function addProductToList(product){
 export function addProductToCart(productId){
   return{
     type: ADD_PRODUCT_TO_CART,
+    productId
+  }
+}
+
+export function removeProductFromCart(productId){
+  return{
+    type: REMOVE_PRODUCT_FROM_CART,
     productId
   }
 }

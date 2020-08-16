@@ -4,14 +4,8 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { addProductToCart } from '../actions';
 
 class ProductCard extends Component {
-
-  addProductToCart = () =>{
-    const { product } = this.props;
-    this.props.dispatch(addProductToCart(product.id));
-  }
-
   render() {
-    const { product } = this.props;
+    const { product, handleClick, label } = this.props;
     return (
       <div className="product-card">
         <div className="product-image">
@@ -24,7 +18,7 @@ class ProductCard extends Component {
         </div>
         <div className="product-options">
           <div className="price">&#8377; {product.price}</div>
-          <button type="button" onClick={this.addProductToCart} className="add-to-cart">Add to Cart</button>
+            <button type="button" id={product.id} onClick={handleClick} className="add-to-cart">{label}</button>
         </div>
       </div>
     );

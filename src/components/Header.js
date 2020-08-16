@@ -5,6 +5,7 @@ import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 
 class Header extends Component {
   render() {
+    const { cartSize } = this.props;
     return (
       <div>
         <Navbar bg="dark" variant="dark" expand="sm">
@@ -20,7 +21,7 @@ class Header extends Component {
             </Nav>
             <Form inline>
               <Button variant="outline-info" onClick={() => window.location.href="cart"}>
-              <FontAwesomeIcon icon={faCartPlus} /> 
+              <FontAwesomeIcon icon={faCartPlus} /> <sup className="cart-size">{cartSize !== 0 ? cartSize : ''}</sup>
               </Button>
             </Form>
           </Navbar.Collapse>
