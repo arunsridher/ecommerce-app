@@ -10,7 +10,7 @@ export const CLEAR_MESSAGE_STATE = "CLEAR_MESSAGE_STATE";
 
 // action creators
 export function getProducts(){
-  const url= "http://localhost:3004/products";
+  const url= "https://my-json-server.typicode.com/arunsridher/ecommerce-app/products";
   return (dispatch) => {
     fetch(url)
       .then(response => response.json())

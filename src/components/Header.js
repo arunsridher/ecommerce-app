@@ -19,9 +19,11 @@ class Header extends Component {
               <Nav.Link><NavLink to="/edit" style={{textDecoration: 'none', color: '#aaa'}} activeStyle={{color: '#fff'}}>Manage Products</NavLink></Nav.Link>
             </Nav>
             <Form inline>
+            <NavLink to="/add" style={{textDecoration: 'none', color: '#aaa'}} activeStyle={{color: '#fff'}}>
               <Button variant="outline-info" onClick={() => window.location.href="cart"}>
               <FontAwesomeIcon icon={faCartPlus} /> <sup className="cart-size">{cartSize !== 0 ? cartSize : ''}</sup>
               </Button>
+            </NavLink>
             </Form>
           </Navbar.Collapse>
         </Navbar>
