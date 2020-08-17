@@ -8,6 +8,7 @@ class Cart extends Component {
   
   handleClick = (e) => {
     const productId = e.target.id;
+    console.log(e.target);
     this.props.dispatch(removeProductFromCart(productId));
     Swal.fire({
       text: 'Product removed from cart',
@@ -32,6 +33,7 @@ class Cart extends Component {
                 dispatch={this.props.dispatch}
                 handleClick = {this.handleClick}
                 label="Remove from Cart"
+                className="btn-danger"
               /> : null
           ))
         }

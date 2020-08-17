@@ -5,7 +5,7 @@ import { addProductToCart } from '../actions';
 
 class ProductCard extends Component {
   render() {
-    const { product, handleClick, label } = this.props;
+    const { product, handleClick, label, className } = this.props;
     return (
       <div className="product-card">
         <div className="product-image">
@@ -18,7 +18,7 @@ class ProductCard extends Component {
         </div>
         <div className="product-options">
           <div className="price">&#8377; {product.price}</div>
-            <button type="button" id={product.id} onClick={handleClick} className="add-to-cart">{label}</button>
+            <button type="button" id={product.id} onClick={handleClick} className={"add-to-cart " + className}>{label}</button>
         </div>
       </div>
     );

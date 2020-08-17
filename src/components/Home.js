@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ProductCard } from './index';
-import { addProductToCart } from '../actions';
+import { ProductCard, Cart } from './index';
+import { addProductToCart, removeProductFromCart } from '../actions';
 import Swal from 'sweetalert2';
 
 class Home extends Component {
@@ -15,21 +15,42 @@ class Home extends Component {
   }
 
   handleClick = (e) => {
-    console.log("Home ", e.target.id);
+    console.log("Home ", e.target.innerHTML);
     const productId = e.target.id;
-    this.props.dispatch(addProductToCart(productId));
-    Swal.fire({
-      text: 'Product added to cart',
-      icon: 'success',
-      showConfirmButton: false,
-      timer: 1000,
-      position: 'top',
-      toast: true
-    });
+    console.log(this.props.state);
+    if(e.target.innerHTML === "Add to Cart"){
+      this.props.dispatch(addProductToCart(productId));
+      if(this.props.state.status === 'success'){
+        e.target.innerHTML = "Remove from Cart";
+        e.target.className = "btn-danger";
+      }
+      Swal.fire({
+        text: this.props.state.message,
+        icon: this.props.state.status,
+        showConfirmButton: false,
+        timer: 1000,
+        position: 'top',
+        toast: true
+      });
+    }
+    else{
+      this.props.dispatch(removeProductFromCart(productId));
+      if(this.props.state.status === 'success'){
+        e.target.innerHTML = "Add to Cart";
+        e.target.className = "btn-success";
+      }
+      Swal.fire({
+        text: this.props.state.message,
+        icon: this.props.state.status,
+        showConfirmButton: false,
+        timer: 1000,
+        position: 'top',
+        toast: true
+      });
+    }
   }
 
   toggleSort = (e) => {
-    console.log(e.target);
     if(this.state.sortEnabled){
       e.target.className="btn-success";
       e.target.innerHTML="Sort By Price";
@@ -53,6 +74,7 @@ class Home extends Component {
   render() {
     console.log('State ', this.props.state);
     const productsList = this.state.sortEnabled ? this.state.sortedData : this.props.state.productsList;
+    const cart = this.props.state.cart;
     // const { productsList } = this.props.state;
     return (
       <div className="products-container">
@@ -64,7 +86,8 @@ class Home extends Component {
                 key={`product-${index}`}
                 dispatch={this.props.dispatch}
                 handleClick = {this.handleClick}
-                label ="Add to Cart"
+                label = {cart.includes(product.id.toString()) ? "Remove from Cart" : "Add to Cart"} 
+                className={cart.includes(product.id.toString()) ? "btn-danger" : "btn-success"}
               /> 
             ))
           }
