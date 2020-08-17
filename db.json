@@ -1,22 +1,6 @@
 {
   "products": [
     {
-      "id": 1,
-      "name": "Phone",
-      "description": "a telephone with access to a cellular radio system so it can be used over a wide area, without a physical connection to a network.",
-      "price": 39999,
-      "rating": "3.5",
-      "img": "https://images.unsplash.com/photo-1544866092-1935c5ef2a8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-    },
-    {
-      "id": 2,
-      "name": "Laptop",
-      "description": "a computer that is portable and suitable for use while travelling.",
-      "price": 98000,
-      "rating": "4.5",
-      "img": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-    },
-    {
       "id": 3,
       "name": "Watch",
       "description": "a watch worn on a strap round the wrist.",
@@ -25,12 +9,12 @@
       "img": "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
     },
     {
-      "id": 4,
-      "name": "Watch",
+      "name": "Camera",
       "description": "A camera is an optical instrument used to record images. At their most basic, cameras are sealed boxes (the camera body) with a small hole (the aperture) that allow light in to capture an image on a light-sensitive surface (usually photographic film or a digital sensor).",
-      "price": 12999,
       "rating": "3.1",
-      "img": "https://images.unsplash.com/photo-1561930543-32ede0352b5c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+      "price": 12999,
+      "img": "https://images.unsplash.com/photo-1561930543-32ede0352b5c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+      "id": 4
     },
     {
       "id": 5,
@@ -55,6 +39,22 @@
       "rating": "3.7",
       "img": "https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
       "id": 7
+    },
+    {
+      "name": "Shoe",
+      "description": "Shoes",
+      "price": "1500",
+      "rating": "2.8",
+      "img": "https://images.unsplash.com/photo-1587563871167-1ee9c731aefb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+      "id": 8
+    },
+    {
+      "name": "Bike",
+      "description": "Harley-Davidson, Inc., H-D, or Harley, is an American motorcycle manufacturer founded in 1903 in Milwaukee, Wisconsin. Along with Indian it was one of two major American motorcycle manufacturers to survive the Great Depression.",
+      "rating": "4.6",
+      "price": "1000000",
+      "img": "https://images.unsplash.com/photo-1558981852-426c6c22a060?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+      "id": 9
     }
   ]
 }

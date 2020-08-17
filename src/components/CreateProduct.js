@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addProductToList } from '../actions';
+import { addProductToList, clearMessageState } from '../actions';
 import Swal from 'sweetalert2';
 
 class CreateProduct extends Component {
@@ -14,14 +14,44 @@ class CreateProduct extends Component {
       img: ""
     }
   }
-
+  
   handleInput = (e) => {
     this.setState({
       [e.target.name] : e.target.value
     })
   }
 
+  isEmpty = (str) => {
+    return str === undefined || str.trim() === '';
+  }
+
+  showAlert = (msg) => {
+    Swal.fire({
+      text: msg,
+      icon: 'error',
+      showConfirmButton: false,
+      timer: 1000,
+      position: 'center',
+    });
+  }
+
   addProduct = () => {
+    if(this.isEmpty(this.state.name)){
+      this.showAlert("Please provide the name of the product");
+      return;
+    }
+    if(this.isEmpty(this.state.description)){
+      this.showAlert("Please provide the description of the product");
+      return;
+    }
+    if(this.isEmpty(this.state.price) || this.state.price === "0"){
+      this.showAlert("Please provide the price of the product");
+      return;
+    }
+    if(this.isEmpty(this.state.img)){
+      this.showAlert("Please provide the image URL of the product");
+      return;
+    }
     let product = {
       name: this.state.name,
       description: this.state.description,
@@ -34,8 +64,8 @@ class CreateProduct extends Component {
       this.resetForm();
     }
     Swal.fire({
-      text: this.props.state.message,
-      icon: this.props.state.status,
+      text: "Product added successfully",
+      icon: 'success',
       showConfirmButton: false,
       timer: 1000,
       position: 'top',

@@ -1,13 +1,29 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { ProductEditCard } from './';
 
 class ManageProducts extends Component {
   render() {
+    const productsList = this.props.state.productsList;
     return (
       <div>
-        Manage Products
+        {
+          productsList.map((product, index) => (
+            <ProductEditCard
+              product={product} 
+              key={`product-${product.id}-${index}-${product.name}`}
+              dispatch={this.props.dispatch}
+            /> 
+          ))
+        }
       </div>
     );
   }
 }
 
-export default ManageProducts;
+function mapStateToProps(state){
+  return{
+    state
+  }
+}
+export default connect(mapStateToProps)(ManageProducts);

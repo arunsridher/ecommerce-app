@@ -79,7 +79,6 @@ code {
   background-color: #388E3C;
   color: #fff;
   border-radius: 3px;
-
 }
 
 .rating{
@@ -168,4 +167,52 @@ code {
   font-family: 'Courier New', Courier, monospace;
   letter-spacing: 2px;
   margin: 15px 15px 25px;
+}
+
+.options{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.options > div {
+  font-size: 16px;
+  padding: 5px;
+  margin: 2px 0;
+  border-radius: 2px;
+  width: 85px;
+}
+
+.options-button:hover{
+  cursor: pointer;
+  background-color: rgba(55, 55, 55, 0.1);
+}
+
+.edit-icon{
+  color: #9CACC3;
+}
+
+.delete-icon{
+  color: #C9302C;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.description::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.description {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }

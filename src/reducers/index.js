@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { ADD_PRODUCTS, ADD_PRODUCT_TO_CART, REMOVE_PRODUCT_FROM_CART, ADD_PRODUCT_TO_LIST } from '../actions';
+import { ADD_PRODUCTS, ADD_PRODUCT_TO_CART, REMOVE_PRODUCT_FROM_CART, ADD_PRODUCT_TO_LIST, UPDATE_PRODUCT, CLEAR_MESSAGE_STATE, DELETE_PRODUCT } from '../actions';
 
 const initialProductState = {
   productsList: [],
@@ -60,6 +60,28 @@ export function products(state = initialProductState, action){
         cart: updatedCart,
         status: 'success',
         message: 'Product removed from cart'
+      };
+    case UPDATE_PRODUCT:
+      const updatedList = state.productsList.map(product => product.id === action.product.id ? action.product : product);
+      return {
+        ...state,
+        productsList: updatedList,
+        status: 'success',
+        message: 'Product updated successfully'
+      }
+    case CLEAR_MESSAGE_STATE:
+      return{
+        ...state,
+        status: action.status,
+        message: action.message
+      };
+    case DELETE_PRODUCT:
+      const filteredList = state.productsList.filter(product => product.id !== action.productId);
+      return{
+        ...state,
+        productsList: filteredList,
+        status: 'success',
+        message: 'Product deleted from cart'
       }
     default:
       return state;

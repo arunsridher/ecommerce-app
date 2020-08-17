@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ProductCard, Cart } from './index';
-import { addProductToCart, removeProductFromCart } from '../actions';
+import { ProductCard } from './index';
+import { addProductToCart, removeProductFromCart, clearMessageState } from '../actions';
 import Swal from 'sweetalert2';
 
 class Home extends Component {
@@ -14,16 +14,8 @@ class Home extends Component {
     }
   }
 
-  handleClick = (e) => {
-    console.log("Home ", e.target.innerHTML);
-    const productId = e.target.id;
-    console.log(this.props.state);
-    if(e.target.innerHTML === "Add to Cart"){
-      this.props.dispatch(addProductToCart(productId));
-      if(this.props.state.status === 'success'){
-        e.target.innerHTML = "Remove from Cart";
-        e.target.className = "btn-danger";
-      }
+  componentDidUpdate(prevProps){
+    if(prevProps.value !== this.props && this.props.state.status !== ''){ 
       Swal.fire({
         text: this.props.state.message,
         icon: this.props.state.status,
@@ -31,7 +23,21 @@ class Home extends Component {
         timer: 1000,
         position: 'top',
         toast: true
+      })
+      .then(() => {
+        this.props.dispatch(clearMessageState());
       });
+    }
+  }
+
+  handleClick = (e) => {
+    const productId = e.target.id;
+    if(e.target.innerHTML === "Add to Cart"){
+      this.props.dispatch(addProductToCart(productId));
+      if(this.props.state.status === 'success'){
+        e.target.innerHTML = "Remove from Cart";
+        e.target.className = "btn-danger";
+      }
     }
     else{
       this.props.dispatch(removeProductFromCart(productId));
@@ -39,14 +45,6 @@ class Home extends Component {
         e.target.innerHTML = "Add to Cart";
         e.target.className = "btn-success";
       }
-      Swal.fire({
-        text: this.props.state.message,
-        icon: this.props.state.status,
-        showConfirmButton: false,
-        timer: 1000,
-        position: 'top',
-        toast: true
-      });
     }
   }
 
