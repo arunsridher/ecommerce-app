@@ -7,7 +7,7 @@ export const REMOVE_PRODUCT_FROM_CART = "REMOVE_PRODUCT_FROM_CART";
 
 // action creators
 export function getProducts(){
-  const url= "http://my-json-server.typicode.com/arunsridher/ecommerce-app/products";
+  const url= "http://localhost:3004/products";
   return (dispatch) => {
     fetch(url)
       .then(response => response.json())
@@ -26,6 +26,24 @@ export function addProducts(products){
 }
 
 export function addProductToList(product){
+  return (dispatch) => {
+    const url = "http://localhost:3004/products";
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+      body: JSON.stringify(product)
+    })
+    .then(response => response.json())
+    .then(response => {
+      console.log(response);
+      dispatch(addProductToStore(response));
+    })
+  }
+}
+
+export function addProductToStore(product){
   return {
     type: ADD_PRODUCT_TO_LIST,
     product

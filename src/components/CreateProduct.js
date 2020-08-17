@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { addProductToList } from '../actions';
+import Swal from 'sweetalert2';
 
 class CreateProduct extends Component {
   constructor(props){
@@ -12,38 +15,71 @@ class CreateProduct extends Component {
     }
   }
 
-  handleInput = (e) =>{
+  handleInput = (e) => {
     this.setState({
       [e.target.name] : e.target.value
     })
   }
+
+  addProduct = () => {
+    let product = {
+      name: this.state.name,
+      description: this.state.description,
+      price: this.state.price,
+      rating: this.state.rating,
+      img: this.state.img
+    }
+    this.props.dispatch(addProductToList(product));
+    if(this.props.state.status === "success"){
+      this.resetForm();
+    }
+    Swal.fire({
+      text: this.props.state.message,
+      icon: this.props.state.status,
+      showConfirmButton: false,
+      timer: 1000,
+      position: 'top',
+      toast: true
+    });
+  }
+
+  resetForm = () => {
+    this.setState({
+      name: "",
+      description: "",
+      price: "",
+      rating: 0,
+      img: ""
+    })
+  }
+
   render() {
     return (
       <div>
         <h1 className="page-heading">ADD PRODUCT</h1>
         <form id="add-product-form">
           <div className="input-group">
-            <label for="name">Name *</label>
-            <input type="text" id="name" className="custom-input" name="name" onChange={this.handleInput} value={this.state.name} />
+            <label htmlFor="name">Name *</label>
+            <input type="text" id="name" className="custom-input" name="name" onChange={this.handleInput} value={this.state.name} required/>
           </div>
           <div className="input-group">
-            <label for="description">Description *</label>
-            <textarea id="description" className="custom-input" name="description" onChange={this.handleInput} value={this.state.description} rows="3" cols="30"></textarea>
+            <label htmlFor="description">Description *</label>
+            <textarea id="description" className="custom-input" name="description" onChange={this.handleInput} value={this.state.description} rows="3" cols="30" required></textarea>
           </div>
           <div className="input-group">
-            <label for="price">Price *</label>
-            <input type="number" id="price" className="custom-input" name="price" onChange={this.handleInput} value={this.state.price} />
+            <label htmlFor="price">Price *</label>
+            <input type="number" id="price" className="custom-input" name="price" onChange={this.handleInput} value={this.state.price}  required/>
           </div>
           <div className="input-group">
-            <label for="rating">Rating *</label>
-            <input type="range" min="0" max="5" step="0.1" id="rating" className="custom-input" name="rating" onChange={this.handleInput} value={this.state.rating} />
+            <label htmlFor="rating">Rating *</label>
+            <input type="range" min="0" max="5" step="0.1" id="rating" className="custom-input" name="rating" onChange={this.handleInput} value={this.state.rating}  required/>
           </div>
           <div className="input-group">
-            <label for="img">URL *</label>
-            <input type="url" id="img" className="custom-input" name="img" onChange={this.handleInput} value={this.state.img} />
+            <label htmlFor="img">URL *</label>
+            <input type="url" id="img" className="custom-input" name="img" onChange={this.handleInput} value={this.state.img}  required/>
           </div>
           <div className="input-button-group">
-            <button type="button" className="btn-success">Add Product</button>
+            <button type="button" className="btn-success" onClick={this.addProduct}>Add Product</button>
             <button type="button" className="btn-danger">Reset</button>
           </div>
         </form>
@@ -52,4 +88,9 @@ class CreateProduct extends Component {
   }
 }
 
-export default CreateProduct;
+function mapStateToProps(state){
+  return{
+    state
+  }
+}
+export default connect(mapStateToProps)(CreateProduct);
